@@ -6,7 +6,7 @@ const authController = {
     login : (request, response) => {
         //these values are here beacause of express.json() middleware;
         const {username, password} = request.body;
-        
+
         if(username === 'admin' && password === 'admin'){
             const userDetails = {
                 name : "John Cena",
@@ -39,7 +39,7 @@ const authController = {
             response.status(401).json({message : 'Unauthorized Access'});
         }
         
-        jwt.verify(token, secret, (error, decodedSecret) => { //verifing if token in valid
+        jwt.verify(token, secret, (error, decodedSecret) => {  //verifing if token in valid
             if(error){
                 response.status(401).json({message : 'Unauthorized Access'});
             }
