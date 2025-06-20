@@ -6,12 +6,13 @@ const authController = {
     login : (request, response) => {
         //these values are here beacause of express.json() middleware;
         const {username, password} = request.body;
-
+        
         if(username === 'admin' && password === 'admin'){
             const userDetails = {
                 name : "John Cena",
                 email : "John@email.com"
             }
+
             const token = jwt.sign(userDetails, secret, {expiresIn: '1h'});
 
             response.cookie('jwtToken', token,{
