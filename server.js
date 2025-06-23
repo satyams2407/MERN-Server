@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');  // Expres module include
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -9,7 +10,7 @@ app.use(express.json());  // Middleware to convert req into json format
 app.use(cookieParser());
 
 const corsOptions = {   // from where to except request
-    origin : 'http://localhost:3000',
+    origin : process.env.CLIENT_ENDPOINT,
     credentials : true
 };
 app.use(cors(corsOptions));
